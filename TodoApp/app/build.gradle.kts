@@ -9,11 +9,6 @@ android {
     namespace = "com.daniel.todoapp"
     compileSdk = 34
 
-    buildFeatures{
-        viewBinding = true
-        dataBinding = true
-    }
-
     defaultConfig {
         applicationId = "com.daniel.todoapp"
         minSdk = 27
@@ -23,7 +18,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -43,15 +41,12 @@ android {
 }
 
 dependencies {
-
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
-    implementation ("androidx.room:room-runtime:2.6.1")
-    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation ("androidx.room:room-runtime:2.5.1")
+    implementation ("androidx.room:room-ktx:2.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    kapt ("androidx.room:room-compiler:2.6.1")
-
-
+    kapt ("androidx.room:room-compiler:2.5.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

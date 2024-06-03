@@ -4,51 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateTodoFragment">
+    tools:context="com.daniel.todoapp.view.CreateTodoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtJudulTodo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="48dp"
-            android:text="New ToDo"
-            android:textSize="48sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="24dp"
+            android:text="New To-do"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="285dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/txtJudulTodo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Enter to do title" />
+                android:layout_height="wrap_content"
+                android:hint="Enter todo title" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -56,7 +59,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtNotes"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Enter todo notes" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,10 +67,9 @@
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
             android:text="Submit"
-            android:textColorLink="@color/material_dynamic_neutral100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupPriority" />
 
@@ -75,8 +77,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
             android:text="Priority"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
@@ -84,10 +86,9 @@
         <RadioGroup
             android:id="@+id/radioGroupPriority"
             android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -115,5 +116,4 @@
                 android:text="Low" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>
