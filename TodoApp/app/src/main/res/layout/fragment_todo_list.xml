@@ -21,7 +21,9 @@
         android:clickable="true"
         android:src="@drawable/baseline_edit_24"
         tools:ignore="SpeakableTextPresentCheck" />
-    <Button
+
+<!--    for testing purposes :D-->
+        <Button
         android:id="@+id/debug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,4 +31,5 @@
         android:layout_margin="16dp"
         android:text="debug"
         />
+<!--  ==================  -->
 </FrameLayout>

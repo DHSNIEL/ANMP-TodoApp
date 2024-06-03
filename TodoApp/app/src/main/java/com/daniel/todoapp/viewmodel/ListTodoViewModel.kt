@@ -31,29 +31,27 @@ class ListTodoViewModel(application: Application) : AndroidViewModel(application
 
             val allTodo = db.todoDao().selectAllTodo()
             val activeTodo = allTodo.filter { it.isDone == 0 }
-//            withContext(Dispatchers.Main){
-//                todoLD.value = activeTodo
-//                loadingLD.value = false
-//            }
+            withContext(Dispatchers.Main){
+                todoLD.value = activeTodo
+                loadingLD.value = false
+            }
 
-            todoLD.postValue(activeTodo)
+//            todoLD.postValue(activeTodo)
 ////            todoLD.postValue(db.todoDao().selectAllTodo())
-            loadingLD.postValue(false)
+//            loadingLD.postValue(false)
         }
     }
 
     fun taskFinished(todo: Todo) {
         launch {
             val db = buildDb(getApplication())
-            if (todo.isDone == 1) {
-                todo.isDone = 0
-            } else {
-                todo.isDone = 1
-            }
+            todo.isDone = if (todo.isDone == 1) 0 else 1
 
             db.todoDao().updateTodo(todo)
-            todoLD.postValue(db.todoDao().selectAllTodo())
-//            refresh()
+//            todoLD.postValue(db.todoDao().selectAllTodo())
+            withContext(Dispatchers.Main){
+                refresh()
+            }
         }
     }
 

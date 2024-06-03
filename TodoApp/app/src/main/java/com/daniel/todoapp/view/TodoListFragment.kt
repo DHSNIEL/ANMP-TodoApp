@@ -18,10 +18,10 @@ import com.daniel.todoapp.viewmodel.ListTodoViewModel
 
 class TodoListFragment : Fragment() {
 
-
     private lateinit var binding:FragmentTodoListBinding
     private lateinit var viewModel:ListTodoViewModel
     private val adapter = TodoListAdapter(arrayListOf(), {item->viewModel.taskFinished(item)})
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,8 +29,6 @@ class TodoListFragment : Fragment() {
         binding = FragmentTodoListBinding.inflate(inflater, container,false)
         return binding.root
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,8 +51,6 @@ class TodoListFragment : Fragment() {
 
     }
 
-
-
     fun observeViewModel(){
         viewModel.todoLD.observe(viewLifecycleOwner,
             Observer {
@@ -74,7 +70,4 @@ class TodoListFragment : Fragment() {
 
     }
 
-     fun refreshTodoList(){
-        viewModel.refresh()
-    }
 }

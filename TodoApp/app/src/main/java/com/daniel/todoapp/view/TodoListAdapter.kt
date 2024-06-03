@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.daniel.todoapp.databinding.TodoItemLayoutBinding
@@ -30,14 +31,34 @@ class TodoListAdapter(
         holder.binding.todo = todoList[position]
         holder.binding.listener = this
         holder.binding.editlistener = this
+
+
+        holder.binding.checkTask.setOnCheckedChangeListener(null)
+        holder.binding.checkTask.isChecked = todoList[position].isDone == 1
+
+        holder.binding.checkTask.tag = todoList[position]
+
+        holder.binding.checkTask.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if(buttonView.isPressed){
+                val currentTodo = buttonView.tag as Todo
+                currentTodo.isDone = if(isChecked) 1 else 0
+                adapterOnClick(currentTodo)
+            }
+        }
+
+        /* sempat berhasil
 //        holder.binding.checkTask.setOnCheckedChangeListener { _, isChecked ->
-//            if(isChecked){
+//            if (isChecked) {
 //                adapterOnClick(todoList[position])
-//                (holder.itemView.context as? TodoListFragment)?.refreshTodoList()
+//                (holder.itemView.context as? FragmentActivity)?.supportFragmentManager?.fragments?.forEach {
+//                    if (it is TodoListFragment) {
+//                        it.refreshTodoList()
+//                    }
+//                }
 //            }
 //        }
+*/
 //        holder.binding.checkTask.isChecked = false
-        holder.binding.checkTask.isChecked = todoList[position].isDone == 1
     }
 
     fun updateTodoList(newtodolist: List<Todo>) {
