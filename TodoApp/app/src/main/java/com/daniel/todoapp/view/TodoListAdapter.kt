@@ -30,7 +30,14 @@ class TodoListAdapter(
         holder.binding.todo = todoList[position]
         holder.binding.listener = this
         holder.binding.editlistener = this
-        holder.binding.checkTask.isChecked = false
+//        holder.binding.checkTask.setOnCheckedChangeListener { _, isChecked ->
+//            if(isChecked){
+//                adapterOnClick(todoList[position])
+//                (holder.itemView.context as? TodoListFragment)?.refreshTodoList()
+//            }
+//        }
+//        holder.binding.checkTask.isChecked = false
+        holder.binding.checkTask.isChecked = todoList[position].isDone == 1
     }
 
     fun updateTodoList(newtodolist: List<Todo>) {
@@ -50,4 +57,6 @@ class TodoListAdapter(
         val action = TodoListFragmentDirections.actionEditTodo(uuid)
         Navigation.findNavController(v).navigate(action)
     }
+
+
 }

@@ -1,22 +1,27 @@
 package com.daniel.todoapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.daniel.todoapp.databinding.FragmentTodoListBinding
+
 import com.daniel.todoapp.viewmodel.ListTodoViewModel
 
 
 class TodoListFragment : Fragment() {
+
+
     private lateinit var binding:FragmentTodoListBinding
     private lateinit var viewModel:ListTodoViewModel
-    private val adapter = TodoListAdapter(arrayListOf(), {item->viewModel.clearTask(item)})
+    private val adapter = TodoListAdapter(arrayListOf(), {item->viewModel.taskFinished(item)})
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +29,8 @@ class TodoListFragment : Fragment() {
         binding = FragmentTodoListBinding.inflate(inflater, container,false)
         return binding.root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,8 +46,14 @@ class TodoListFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
+        binding.debug.setOnClickListener{
+            viewModel.debugFetch()
+        }
         observeViewModel()
+
     }
+
+
 
     fun observeViewModel(){
         viewModel.todoLD.observe(viewLifecycleOwner,
@@ -53,5 +66,15 @@ class TodoListFragment : Fragment() {
                 }
         })
 
+        viewModel.debugTodo.observe(viewLifecycleOwner, Observer {
+            todos -> todos.forEach{
+                todo -> Log.d("TodoDebug", "Todo: ${todo.title}, is_done: ${todo.isDone}")
+        }
+        })
+
+    }
+
+     fun refreshTodoList(){
+        viewModel.refresh()
     }
 }

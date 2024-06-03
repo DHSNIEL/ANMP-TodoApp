@@ -12,7 +12,7 @@ data class Todo(
     @ColumnInfo(name="priority")
     var priority:Int,
     @ColumnInfo(name="is_done")
-    var isdone:Int = 0
+    var isDone:Int = 0
     ){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
